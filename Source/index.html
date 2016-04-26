@@ -11,7 +11,7 @@
 </head>
 <body>
 <!-- <div ng-app="giuaky" ng-controller="dataController"> -->
-<div ng-app="giuaky">
+<div ng-app="giuaky"  ng-controller="dataCtrl">
 	<div class="container">
 		<div class="row top">
 			<div class="col-md-4">
@@ -27,7 +27,8 @@
 			<div class="col-md-3">
 			<img src="images/NghiaDinh.jpg" alt="" width="100%" height="250px">
 			</div>
-			<div class="col-md-6" ng-controller="informationCtrl">
+			<div class="col-md-6">
+			<div ng-repeat="i in myi">
 				<h1>{{i.hoten}}</h1>
 				<p>{{i.headline}}</p>
 				<table style="width:100%">
@@ -44,6 +45,7 @@
 				    <td>{{i.thongtin}}</td>
 			  	</tr>
 			  	</table>
+			  	</div>
 			</div>
 			<div class="col-md-3">
  				<a href="https://www.linkedin.com/pulse/discover">Influencer</a> 
@@ -51,42 +53,42 @@
 		</div>
 		<p></p>
 		<!-- summary -->
-		<div class="row noidung" ng-controller="summaryCtrl">
-			<b>Sumary</b>
-			<div ng-repeat="s in mySumary">
+		<div class="row noidung">
+			<b>Summary</b>
+			<div ng-repeat="s in mySummary">
 		 		<p>{{s.noidung}}</p>
 		 	</div>
 		</div>
 		<p></p>
 		<!-- Experience -->
-		<div class="row noidung" ng-controller="expirienceCtrl">
+		<div class="row noidung">
 			<b>Expirience</b>
 			<div ng-repeat="e in myExpirience">
-				<div class="col-md-6">
+				<div class="col-md-8">
 		 			<b>{{e.vitri}}</b>
 		 			<p>{{e.congty}}</p>
 		 			<p>{{e.thoigian}}</p>
 		 		</div>
-		 		<div class="col-md-3 col-md-offset-3">
+		 		<div class="col-md-3 col-md-offset-1">
 		 			<img src="images/{{e.image}}.jpg" alt="" width="50px" height="50px">
 		 		</div>
-				<hr>
+		 		<hr>
 		 	</div>
 		</div>
 		<p></p>
 		<!-- Project -->
-		<div class="row noidung" ng-controller="projectCtrl">
+		<div class="row noidung">
 			<b>Project</b>
 			<div ng-repeat="p in myProject">
-		 		<b>{{e.tenproject}}</b>
-		 		<p>{{e.vitri}}</p>
-		 		<p>{{e.mota}}</p>
+		 		<b>{{p.tenproject}}</b>
+		 		<p>{{p.vitri}}</p>
+		 		<p>{{p.mota}}</p>
 				<hr>
 		 	</div>
 		</div>
 		<p></p>
 		<!-- Skills -->
-		<div class="row noidung" ng-controller="skillCtrl">
+		<div class="row noidung">
 			<b>Skills</b>
 			<ul>
 			<div ng-repeat="x in mySkill">
@@ -96,12 +98,23 @@
 		</div>
 		<p></p>
 		<!-- Education -->
-		<div class="row noidung" ng-controller="educationCtrl">
+		<div class="row noidung">
 			<b>Education</b>
 			<div ng-repeat="edu in myEducation">
-		 		<b>{{edu.tentruong}}</b>
-		 		<p>{{edu.thoigiantotngiep}}</p>
-		 		<p>{{edu.diemphay}}</p>
+		 		<table style="width:50%">
+			  	<tr>
+				    <td>University</td>
+				    <td><b>{{edu.tentruong}}</b></td>
+			  	</tr>
+			  	<tr>
+				    <td>Graduate</td>
+				    <td>{{edu.thoigiantotnghiep}}</td>
+			  	</tr>
+			  	<tr>	
+				    <td>Điểm phẩy</td>
+				    <td>{{edu.diemphay}}</td>
+			  	</tr>
+			  	</table>
 		 	</div>
 		</div>
 		<hr>
@@ -109,36 +122,33 @@
 		<div class="row">
 			Trang được tạo bởi 1212255 Đinh Trọng Nghĩa
 		</div>
+
 	</div>
 </div>
 <script>
-	var app = angular.module('summary', []);
-	app.controller('informationCtrl', function($scope, $http) {
+
+	var app = angular.module('giuaky', []);
+	app.controller('dataCtrl', function($scope, $http) {
   	$http.get("json/information.json").then(function (response) {
-      	$scope.i = response.data.informationjson;
+      	$scope.myi = response.data.informationjson;
   	});
 
-  	app.controller('summaryCtrl', function($scope, $http) {
   	$http.get("json/summary.json").then(function (response) {
-      	$scope.mySumary = response.data.summaryjson;
+      	$scope.mySummary = response.data.summaryjson;
   	});
 
-  	app.controller('expirienceCtrl', function($scope, $http) {
   	$http.get("json/expirience.json").then(function (response) {
       	$scope.myExpirience = response.data.expiriencejson;
   	});
 
-  	app.controller('projectCtrl', function($scope, $http) {
   	$http.get("json/project.json").then(function (response) {
       	$scope.myProject = response.data.projectjson;
   	});
 
-  	app.controller('skillCtrl', function($scope, $http) {
   	$http.get("json/skill.json").then(function (response) {
       	$scope.mySkill = response.data.skilljson;
   	});
 
-  	app.controller('educationCtrl', function($scope, $http) {
   	$http.get("json/education.json").then(function (response) {
       	$scope.myEducation = response.data.educationjson;
   	});
