@@ -1,0 +1,14 @@
+{"expitiencejson": [
+		{
+			"vitri":"nhân viên 1",
+			"congty":"Công ty ABC",
+			"thoigian":"2012-2015",
+			"image":"congtyabc"
+		},
+		{
+			"vitri":"nhân viên 2",
+			"congty":"Công ty Trách nhiệm hữu hạn 1212255",
+			"thoigian":"2015-2017",
+			"image":"congty1212255"
+		}
+] }

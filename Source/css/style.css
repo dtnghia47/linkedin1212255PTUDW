@@ -1,6 +1,6 @@
 body {
-    background-color: #4d004d;
-    padding :8px;
+    /* background-color: #4d004d; */
+    background-color: rgb(204, 204, 179);
 }
 .top {
     background: rgb(245, 245, 239);
@@ -12,4 +12,16 @@ body {
     padding-bottom: 8px;
     padding-top: 8px;
     background: rgb(255, 255, 255);
+}
+.row{
+	padding-left: 20px;
+}
+.skill{
+	box-shadow: 0 1px 1px #ccc;
+	margin: 0 5px 5px 0;
+	color: #333333;
+	background: #f1f1f1;
+	border-radius: 2px;
+	font-weight: normal;
+	display: inline-block;
 }

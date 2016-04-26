@@ -1,0 +1,12 @@
+{"projectjson": [
+		{
+			"tenproject":"Website bán sách",
+			"vitri":"manager",
+			"mota":"Website thiết kế bán sách trên toàn thế giới"
+		},
+		{
+			"tenproject":"App mobile",
+			"vitri":"employee",
+			"mota":"app dùng để cho các máy smartphone xem video được tốt hơn"
+		}
+] }
