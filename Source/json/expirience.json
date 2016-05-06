@@ -1,14 +1,16 @@
 {"expiriencejson": [
 		{
-			"vitri":"nhân viên 1",
+			"id":"1",
+			"vitri":"software developer",
 			"congty":"Công ty ABC",
 			"thoigian":"2012-2015",
-			"image":"congtyabc"
+			"image":"congtyabc.jpg"
 		},
 		{
-			"vitri":"nhân viên 2",
-			"congty":"Công ty Trách nhiệm hữu hạn 1212255",
-			"thoigian":"2015-2017",
-			"image":"congty1212255"
+			"id":"2",
+			"vitri":"software developer",
+			"congty":"Công ty Trách nhiệm hữu hạn Đông A",
+			"thoigian":"2015-2016",
+			"image":"congty1212255.jpg"
 		}
 ] }

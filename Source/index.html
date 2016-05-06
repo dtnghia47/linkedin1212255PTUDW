@@ -4,8 +4,10 @@
 
 </body>
 <head>
-<title>1212255 Đinh Trọng Nghĩa _ Bài tập giữa kỳ angularjs</title>
+<title>1212255_10 Đinh Trọng Nghĩa _ Bài tập giữa kỳ angularjs</title>
 <script src="js/angular.min.js"></script>
+<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+<script src= "js/myExp.js"></script>
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
@@ -17,11 +19,6 @@
 			<div class="col-md-4">
  				<a href="https://www.linkedin.com/">Linded</a> 
  			</div>
-  			<div class="col-md-3 col-md-offset-5">
-  				<div class="topright">
-  				NghiaDinh
-  				</div>
-  			</div>
 		</div>
 		<div class="row noidung">
 			<div class="col-md-3">
@@ -45,11 +42,35 @@
 				    <td>{{i.thongtin}}</td>
 			  	</tr>
 			  	</table>
-			  	</div>
+                </div>
+                <button class="w3-btn w3-blue-grey w3-ripple" ng-click="editInfor(e.id)">&#9998;Edit</button>
+                <form ng-hide="hideformEditInfor">
+                <!-- <h3 ng-show="edit">Add new</h3> -->
+                <!-- <h3 ng-hide="edit">Edit</h3> -->
+                <h3>Edit</h3>
+                <lable>FullName:</lable>
+                <input class="w3-input w3-border" type="text" ng-model="fhoten" placeholder="FullName">
+                </br>
+                <!-- ng-disabled="!edit" -->
+                <lable>Headline:</lable>
+                <input class="w3-input w3-border" type="text" ng-model="fheadline" placeholder="Headline">
+                </br>
+                <lable>Country:</lable>
+                <input class="w3-input w3-border" type="text" ng-model="fquocgia" placeholder="Country">
+                </br>
+                <lable>Major:</lable>
+                <input class="w3-input w3-border" type="text" ng-model="fnghanhnghe" placeholder="Major">
+                </br>
+                <lable>Information:</lable>
+                <input class="w3-input w3-border" type="text" ng-model="fthongtin" placeholder="Information">
+                </br>
+                <button ng-click="addInfor()" class="w3-btn w3-green w3-ripple" >&#10004; Save Changes</button>
+            </form>
 			</div>
 			<div class="col-md-3">
  				<a href="https://www.linkedin.com/pulse/discover">Influencer</a> 
 			</div>
+
 		</div>
 		<p></p>
 		<!-- summary -->
@@ -57,50 +78,168 @@
 			<b>Summary</b>
 			<div ng-repeat="s in mySummary">
 		 		<p>{{s.noidung}}</p>
+		 		
 		 	</div>
+            </br>
+            <button class="w3-btn w3-blue-grey w3-ripple" ng-click="editSum()">&#9998;Edit</button>
+            <form ng-hide="hideformEditSum">
+                <h3>Edit</h3>
+                <lable>Tóm Tắt</lable>
+                <input class="w3-input w3-border" type="text" ng-model="fnoidung" placeholder="Tóm tắt sơ lược về bản thân">
+                </br>
+                <button ng-click="addSum()" class="w3-btn w3-green w3-ripple" >&#10004; Save Changes</button>
+            </form>
 		</div>
 		<p></p>
 		<!-- Experience -->
 		<div class="row noidung">
 			<b>Expirience</b>
+			<p></p>
 			<div ng-repeat="e in myExpirience">
+				<div class="col-md-12">
+                    <hr>
+                </div>
 				<div class="col-md-8">
 		 			<b>{{e.vitri}}</b>
 		 			<p>{{e.congty}}</p>
 		 			<p>{{e.thoigian}}</p>
 		 		</div>
-		 		<div class="col-md-3 col-md-offset-1">
-		 			<img src="images/{{e.image}}.jpg" alt="" width="50px" height="50px">
+		 		<div class="col-md-3">
+		 			<img src="images/{{e.image}}" alt="" width="75px" height="75px">
 		 		</div>
-		 		<hr>
+		 		<div class="col-md-1">
+		 		   <button class="w3-btn w3-blue-grey w3-ripple" ng-click="editExp(e.id)">&#9998;Edit</button>
+                </div>
 		 	</div>
+		 	<div class="col-md-12">
+		 	<button class="w3-btn w3-green w3-ripple" ng-click="showAddExp()">&#9998;Add</button>
+		 	<form ng-hide="hideformExp">
+		 		<!-- <h3 ng-show="edit">Add new</h3> -->
+		 		<!-- <h3 ng-hide="edit">Edit</h3> -->
+                <h3>Add new</h3>
+		 		<lable>Vị Trí:</lable>
+		 		<input class="w3-input w3-border" type="text" ng-model="fvitri" placeholder="Vị Trí">
+		 		</br>
+		 		<!-- ng-disabled="!edit" -->
+		 		<lable>Tên Công Ty:</lable>
+		 		<input class="w3-input w3-border" type="text" ng-model="fcongty" placeholder="Tên Công ty">
+		 		</br>
+		 		<lable>Thời Gian:</lable>
+		 		<input class="w3-input w3-border" type="text" ng-model="fthoigian" placeholder="Thời Gian">
+		 		</br>
+                <lable>Hình Ảnh:</lable>
+                <input class="w3-input w3-border" type="text" ng-model="fhinhanh" placeholder="Hình Ảnh">
+                </br>
+		 		<button ng-click="addExp()" class="w3-btn w3-green w3-ripple" >&#10004; Save Changes</button>
+		 	</form>
+            <form ng-hide="hideformEditExp">
+                <!-- <h3 ng-show="edit">Add new</h3> -->
+                <!-- <h3 ng-hide="edit">Edit</h3> -->
+                <h3>Edit Expirience</h3>
+                <lable>Vị Trí:</lable>
+                <input class="w3-input w3-border" type="text" ng-model="fvitri" placeholder="Vị Trí">
+                </br>
+                <!-- ng-disabled="!edit" -->
+                <lable>Tên Công Ty:</lable>
+                <input class="w3-input w3-border" type="text" ng-model="fcongty" placeholder="Tên Công ty">
+                </br>
+                <lable>Thời Gian:</lable>
+                <input class="w3-input w3-border" type="text" ng-model="fthoigian" placeholder="Thời Gian">
+                </br>
+                <lable>Hình Ảnh:</lable>
+                <input class="w3-input w3-border" type="text" ng-model="fhinhanh" placeholder="Hình Ảnh">
+                </br>
+                <button ng-click="addEditExp(e.id)" class="w3-btn w3-green w3-ripple" >&#10004; Save Changes</button>
+            </form>
+		 	</div>
+
 		</div>
 		<p></p>
 		<!-- Project -->
 		<div class="row noidung">
 			<b>Project</b>
 			<div ng-repeat="p in myProject">
+            <div class="col-md-12">
+                <hr>
+            </div>
+            <div class="col-md-11">
+				
 		 		<b>{{p.tenproject}}</b>
 		 		<p>{{p.vitri}}</p>
 		 		<p>{{p.mota}}</p>
-				<hr>
-		 	</div>
+			</div>
+		 	<div class="col-md-1">
+                <button class="w3-btn w3-blue-grey w3-ripple" ng-click="editPro(p.id)">&#9998;Edit</button>
+            </div>
+            </div>
+            <div class="col-md-12">
+            <button class="w3-btn w3-green w3-ripple" ng-click="showAddPro()">&#9998;Add</button>
+            <form ng-hide="hideformPro">
+                <!-- <h3 ng-show="edit">Add new</h3> -->
+                <!-- <h3 ng-hide="edit">Edit</h3> -->
+                <h3>Add new</h3>
+                <lable>Tên Project:</lable>
+                <input class="w3-input w3-border" type="text" ng-model="ftenpro" placeholder="Tên Project">
+                </br>
+                <!-- ng-disabled="!edit" -->
+                <lable>Vai Trò:</lable>
+                <input class="w3-input w3-border" type="text" ng-model="fvitri" placeholder="Vai Trò">
+                </br>
+                <lable>Mô Tả:</lable>
+                <input class="w3-input w3-border" type="text" ng-model="fmota" placeholder="Mô Tả Project Đã Tham Gia">
+                </br>
+                <button ng-click="addPro()" class="w3-btn w3-green w3-ripple" >&#10004; Save Changes</button>
+            </form>
+            <form ng-hide="hideformEditPro">
+                <!-- <h3 ng-show="edit">Add new</h3> -->
+                <!-- <h3 ng-hide="edit">Edit</h3> -->
+                <h3>Add new</h3>
+                <lable>Tên Project:</lable>
+                <input class="w3-input w3-border" type="text" ng-model="ftenpro" placeholder="Tên Project">
+                </br>
+                <!-- ng-disabled="!edit" -->
+                <lable>Vai Trò:</lable>
+                <input class="w3-input w3-border" type="text" ng-model="fvitri" placeholder="Vai Trò">
+                </br>
+                <lable>Mô Tả:</lable>
+                <input class="w3-input w3-border" type="text" ng-model="fmota" placeholder="Mô Tả Project Đã Tham Gia">
+                </br>
+                <button ng-click="addEditPro()" class="w3-btn w3-green w3-ripple" >&#10004; Save Changes</button>
+            </form>
+            </div>
 		</div>
 		<p></p>
 		<!-- Skills -->
 		<div class="row noidung">
+            <div class="col-md-12">
 			<b>Skills</b>
+            </div>
 			<ul>
 			<div ng-repeat="x in mySkill">
 		 			<li class="skill">{{ x.name }}</li>
 		 	</div>
 		 	</ul>
+            </br>
+            </br>
+                <button class="w3-btn w3-green w3-ripple" ng-click="showAddSkill()">&#9998;Add</button>
+            <form ng-hide="hideformSkill">
+                <!-- <h3 ng-show="edit">Add new</h3> -->
+                <!-- <h3 ng-hide="edit">Edit</h3> -->
+                <h3>Add new</h3>
+                <lable>Skill:</lable>
+                <input class="w3-input w3-border" type="text" ng-model="fname" placeholder="Skills">
+                </br>
+                <button ng-click="addSkill()" class="w3-btn w3-green w3-ripple" >&#10004; Save Changes</button>
+            </form>
 		</div>
 		<p></p>
 		<!-- Education -->
 		<div class="row noidung">
+            
 			<b>Education</b>
+            
 			<div ng-repeat="edu in myEducation">
+            <div class="col-md-11">
 		 		<table style="width:50%">
 			  	<tr>
 				    <td>University</td>
@@ -111,16 +250,33 @@
 				    <td>{{edu.thoigiantotnghiep}}</td>
 			  	</tr>
 			  	<tr>	
-				    <td>Điểm phẩy</td>
+				    <td>GPA</td>
 				    <td>{{edu.diemphay}}</td>
 			  	</tr>
 			  	</table>
-		 	</div>
+            </div>
+            
+            <div class="col-md-1">
+                <button class="w3-btn w3-blue-grey w3-ripple" ng-click="editEdu()">&#9998;Edit</button>
+            </div>
+            </div>
+		 	<form ng-hide="hideformEditEdu">
+                <h3>Edit Education</h3>
+                <lable>Tên Trường</lable>
+                <input class="w3-input w3-border" type="text" ng-model="ftentruong" placeholder="Tên Trường">
+                </br>
+                <lable>Thời Gian Tốt Nghiệp</lable>
+                <input class="w3-input w3-border" type="text" ng-model="fthoigiantotnghiep" placeholder="Thời Gian Tốt Nghiệp">
+                </br>
+                <lable>Điểm Phẩy</lable>
+                <input class="w3-input w3-border" type="text" ng-model="fdiemphay" placeholder="Điểm Phẩy">
+                </br>
+                <button ng-click="addEditEdu()" class="w3-btn w3-green w3-ripple" >&#10004; Save Changes</button>
+            </form>
 		</div>
 		<hr>
-		<hr>
 		<div class="row">
-			Trang được tạo bởi 1212255 Đinh Trọng Nghĩa
+			Linkedin @ 2016
 		</div>
 
 	</div>
@@ -131,26 +287,162 @@
 	app.controller('dataCtrl', function($scope, $http) {
   	$http.get("json/information.json").then(function (response) {
       	$scope.myi = response.data.informationjson;
+        $scope.hideformEditInfor = true;
+        $scope.editInfor = function () {
+            $scope.hideformEditInfor = false;
+            $scope.fhoten = $scope.myi[0].hoten;
+            $scope.fheadline = $scope.myi[0].headline;
+            $scope.fquocgia = $scope.myi[0].quocgia;
+            $scope.fnghanhnghe = $scope.myi[0].nganhnghe;
+            $scope.fthongtin = $scope.myi[0].thongtin;
+        }
+        $scope.addInfor = function () {
+            $scope.hideformEditInfor = true;
+            $scope.myi[0].hoten = $scope.fhoten;
+            $scope.myi[0].headline = $scope.fheadline;
+            $scope.myi[0].quocgia = $scope.fquocgia;
+            $scope.myi[0].nganhnghe = $scope.fnghanhnghe;
+            $scope.myi[0].thongtin = $scope.fthongtin;
+            
+            }
   	});
 
   	$http.get("json/summary.json").then(function (response) {
       	$scope.mySummary = response.data.summaryjson;
+        $scope.hideformEditSum = true;
+        $scope.editSum = function () {
+            $scope.hideformEditSum = false;
+            $scope.fnoidung = $scope.mySummary[0].noidung;
+        }
+        $scope.addSum = function () {
+            $scope.hideformEditSum = true;
+            $scope.mySummary[0].noidung = $scope.fnoidung;
+            }
   	});
 
   	$http.get("json/expirience.json").then(function (response) {
       	$scope.myExpirience = response.data.expiriencejson;
+      	$scope.hideformEditExp = true;
+        $scope.hideformExp = true;
+		$scope.edit = true;
+		$scope.error = false;
+		$scope.incomplete = false;
+        $scope.editExp = function (id) {
+            $scope.hideformEditExp = false;
+            $scope.fvitri = $scope.myExpirience[id-1].vitri;
+            $scope.fcongty = $scope.myExpirience[id-1].congty;
+            $scope.fthoigian = $scope.myExpirience[id-1].thoigian;
+            $scope.fhinhanh = $scope.myExpirience[id-1].image;
+            $scope.idExp = id;
+        }
+        $scope.addEditExp = function () {
+            $scope.hideformEditExp = true;
+            $scope.myExpirience[$scope.idExp-1].vitri = $scope.fvitri;
+            $scope.myExpirience[$scope.idExp-1].congty = $scope.fcongty;
+            $scope.myExpirience[$scope.idExp-1].thoigian = $scope.fthoigian;
+            $scope.myExpirience[$scope.idExp-1].image = $scope.fhinhanh
+            }
+        $scope.showAddExp = function () {
+            $scope.hideformExp = false;
+        }
+
+      	$scope.addExp = function () {
+            // $scope.myExpirience.vitri.push($scope.fvitri);
+            // $scope.myExpirience.congty.push($scope.fcongty);
+            // $scope.myExpirience.thoigian.push($scope.fthoigian);
+            if (angular.isDefined($scope.fvitri) && angular.isDefined($scope.fcongty)   && angular.isDefined($scope.fthoigian)
+                && angular.isDefined($scope.fhinhanh) )
+            {
+                $scope.myExpirience.push({ vitri: $scope.fvitri, congty: $scope.fcongty, thoigian: $scope.fthoigian, image: $scope.fhinhanh });
+                $scope.fvitri = '';
+                $scope.fcongty = '';
+                $scope.fthoigian = '';
+                $scope.fhinhanh = '';
+            }
+            else{
+                $scope.fvitri = '';
+                $scope.fcongty = '';
+                $scope.fthoigian = '';
+                $scope.fhinhanh = '';
+            }
+            $scope.hideformExp = true;
+		    }
+		    $scope.removeItem = function (x) {
+		        $scope.products.splice(x, 1);
+		    }
   	});
 
   	$http.get("json/project.json").then(function (response) {
       	$scope.myProject = response.data.projectjson;
+        $scope.hideformPro = true;
+        $scope.hideformEditPro = true;
+        $scope.editPro = function (id) {
+            $scope.hideformEditPro = false;
+            $scope.ftenpro = $scope.myProject[id-1].tenproject;
+            $scope.fvitri = $scope.myProject[id-1].vitri;
+            $scope.fmota = $scope.myProject[id-1].mota;
+            $scope.idExp = id;
+        }
+        $scope.addEditPro = function () {
+            $scope.hideformEditPro = true;
+            $scope.myProject[$scope.idExp-1].tenproject = $scope.ftenpro;
+            $scope.myProject[$scope.idExp-1].vitri = $scope.fvitri;
+            $scope.myProject[$scope.idExp-1].mota = $scope.fmota;
+            }
+        $scope.showAddPro = function () {
+            $scope.hideformPro = false;
+        }
+        $scope.addPro = function () {
+            if (angular.isDefined($scope.ftenpro) && angular.isDefined($scope.ftenpro) && angular.isDefined($scope.fvitri) && angular.isDefined($scope.fmota)) 
+            {
+                $scope.myProject.push({ tenproject: $scope.ftenpro, vitri: $scope.fvitri, mota: $scope.fmota});
+                $scope.ftenpro = '';
+                $scope.fvitri = '';
+                $scope.fmota = '';
+            }
+            else{
+                $scope.ftenpro = '';
+                $scope.fvitri = '';
+                $scope.fmota = '';
+            }
+            $scope.hideformPro = true;
+            }
   	});
 
   	$http.get("json/skill.json").then(function (response) {
       	$scope.mySkill = response.data.skilljson;
+        $scope.hideformSkill = true;
+        $scope.showAddSkill = function () {
+            $scope.hideformSkill = false;
+        }
+        $scope.addSkill = function () {
+            if (angular.isDefined($scope.fname)) 
+            {
+                $scope.mySkill.push({ name: $scope.fname});
+                $scope.fname = '';
+            }
+            else{
+                $scope.fname = '';
+            }
+            $scope.hideformSkill = true;
+            }
   	});
 
   	$http.get("json/education.json").then(function (response) {
       	$scope.myEducation = response.data.educationjson;
+        $scope.hideformEditEdu = true;
+        $scope.editEdu = function () {
+            $scope.hideformEditEdu = false;
+            $scope.ftentruong = $scope.myEducation[0].tentruong;
+            $scope.fthoigiantotnghiep = $scope.myEducation[0].thoigiantotnghiep;
+            $scope.fdiemphay = $scope.myEducation[0].diemphay;
+        }
+        $scope.addEditEdu = function () {
+            $scope.hideformEditEdu = true;
+            $scope.myEducation[0].tentruong = $scope.ftentruong;
+            $scope.mySummary[0].thoigiantotnghiep = $scope.fthoigiantotnghiep;
+            $scope.mySummary[0].diemphay = $scope.fdiemphay;
+            }
   	});
 
 	});

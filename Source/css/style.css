@@ -24,4 +24,17 @@ body {
 	border-radius: 2px;
 	font-weight: normal;
 	display: inline-block;
+	float: left;
+}
+pre{
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif!important;
+    padding: 0px!important;
+    margin: 0 0 0px!important;
+    font-size: 14px!important;
+    line-height: 1.42857143;
+    word-break: break-all;
+    word-wrap: break-word;
+    background-color: #fff!important;
+    border: 0px solid #ccc !important;
+    border-radius: 0px!important;
 }
